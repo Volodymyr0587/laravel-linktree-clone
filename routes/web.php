@@ -34,11 +34,11 @@ Route::middleware('auth')->group(function () {
 Route::group(['middleware' => 'auth', 'prefix' => 'links-dashboard'], function () {
 
     Route::get('/links', [LinkController::class, 'index'])->name('links.index');
-    Route::get('/links/new', [LinkController::class, 'create']);
-    Route::post('/links/new', [LinkController::class, 'store']);
-    Route::get('/links/{link}', [LinkController::class, 'edit']);
-    Route::post('/links/{link}', [LinkController::class, 'update']);
-    Route::delete('/links/{link}', [LinkController::class, 'destroy']);
+    Route::get('/links/new', [LinkController::class, 'create'])->name('links.create');
+    Route::post('/links/new', [LinkController::class, 'store'])->name('links.store');;
+    Route::get('/links/{link}', [LinkController::class, 'edit'])->name('links.edit');
+    Route::post('/links/{link}', [LinkController::class, 'update'])->name('links.update');;
+    Route::delete('/links/{link}', [LinkController::class, 'destroy'])->name('links.destroy');;
 
 });
 

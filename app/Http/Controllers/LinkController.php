@@ -12,7 +12,8 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = auth()->user()->links();
+        $links = auth()->user()->links()->get();
+
         return view('links.index', [
             'links' => $links,
         ]);
@@ -23,7 +24,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('links.create');
     }
 
     /**
@@ -47,7 +48,7 @@ class LinkController extends Controller
      */
     public function edit(Link  $link)
     {
-        //
+        dd($link->id);
     }
 
     /**
