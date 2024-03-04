@@ -47,6 +47,18 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="background_color" :value="__('Background color of link')" />
+            <x-text-input id="background_color" name="background_color" type="color" class="mt-1 block w-full" :value="old('background_color', $user->background_color)" required autofocus autocomplete="background_color" />
+            <x-input-error class="mt-2" :messages="$errors->get('background_color')" />
+        </div>
+
+        <div>
+            <x-input-label for="text_color" :value="__('Text color of link')" />
+            <x-text-input id="text_color" name="text_color" type="color" class="mt-1 block w-full" :value="old('text_color', $user->text_color)" required autofocus autocomplete="text_color" />
+            <x-input-error class="mt-2" :messages="$errors->get('text_color')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
