@@ -30,7 +30,13 @@
 
                 <button type="submit"
                     class="focus:outline-none bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2">Update</button>
-
+                <form action="{{ route('links.destroy', $link->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                    class="focus:outline-none bg-rose-600 hover:bg-rose-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+                    onclick="return confirm('{{ __('Are you sure you want to delete?') }}')">Delete</button>
+                </form>
             </form>
         </div>
     </div>

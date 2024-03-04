@@ -94,6 +94,13 @@ class LinkController extends Controller
      */
     public function destroy(Request $request, Link $link)
     {
-        //
+        if ($link->user_id !== auth()->user()->id) {
+            return abort(403);
+        }
+
+        $link->delete();
+
+        return redirect()->route('links.index')->with('status', 'Link deleted!');
+
     }
 }
