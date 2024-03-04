@@ -59,9 +59,15 @@ class LinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Link  $link)
+    public function edit(Link $link)
     {
-        dd($link->id);
+        if ($link->user_id !== auth()->user()->id) {
+            return abort(404);
+        }
+
+        return view('links.edit', [
+            'link' => $link
+        ]);
     }
 
     /**
@@ -69,7 +75,18 @@ class LinkController extends Controller
      */
     public function update(Request $request, Link $link)
     {
-        //
+        if ($link->user_id !== auth()->user()->id) {
+            return abort(403);
+        }
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'link' => 'required|url'
+        ]);
+
+        $link->update($request->only(['name', 'link']));
+
+        return redirect()->route('links.index')->with('status', 'Link updated!');
     }
 
     /**
