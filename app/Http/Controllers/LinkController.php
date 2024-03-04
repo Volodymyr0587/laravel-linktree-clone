@@ -12,7 +12,10 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = auth()->user()->links()->paginate(5);
+        $links = auth()->user()->links()
+            ->withCount('visits')
+            ->with('latest_visit')
+            ->paginate(5);
 
         return view('links.index', [
             'links' => $links,
