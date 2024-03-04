@@ -28,4 +28,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::group(['middleware' => 'auth', 'prefix' => 'links-dashboard'], function () {
+
+    Route::get('/links', [LinkController::class, 'index']);
+    Route::get('/links/new', [LinkController::class, 'create']);
+    Route::post('/links/new', [LinkController::class, 'store']);
+    Route::get('/links/{link}', [LinkController::class, 'edit']);
+    Route::post('/links/{link}', [LinkController::class, 'update']);
+    Route::delete('/links/{link}', [LinkController::class, 'destroy']);
+
+});
+
+Route::post('/visit/{link}', [VisitController::class, 'store']);
+
+Route::get('/{user}', [UserController::class, 'show']);
+
 require __DIR__.'/auth.php';
