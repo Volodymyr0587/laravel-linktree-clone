@@ -12,7 +12,10 @@ class LinkController extends Controller
      */
     public function index()
     {
-        return view('links.index');
+        $links = auth()->user()->links();
+        return view('links.index', [
+            'links' => $links,
+        ]);
     }
 
     /**
