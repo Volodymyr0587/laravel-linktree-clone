@@ -32,7 +32,20 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'link' => 'required|url'
+        ]);
+
+        $link = auth()->user()->links()
+            ->create($request->only(['name', 'link']));
+
+        if ($link) {
+            return redirect()->route('links.index')->with('status', 'Link created!');
+        }
+
+        return redirect()->back();
+
     }
 
     /**
