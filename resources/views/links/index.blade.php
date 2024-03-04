@@ -51,5 +51,6 @@
                     </tbody>
                 </table>
             </div>
+            {{ $links->links() }}
         </div>
 </x-app-layout>
