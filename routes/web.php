@@ -44,6 +44,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'links-dashboard'], function (
 
 Route::post('/visit/{link}', [VisitController::class, 'store']);
 
-Route::get('/{user}', [UserController::class, 'show']);
 
 require __DIR__.'/auth.php';
