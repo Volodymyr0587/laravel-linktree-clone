@@ -18,8 +18,8 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'background_color' => ['required', 'string'],
-            'text_color' => ['required', 'string'],
+            'background_color' => ['required', 'size:7', 'starts_with:#', 'string'],
+            'text_color' => ['required', 'size:7', 'starts_with:#', 'string'],
         ];
     }
 }
