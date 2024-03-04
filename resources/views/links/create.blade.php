@@ -11,7 +11,7 @@
                 @csrf
                 <div class="mb-5">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
-                    <input type="text" id="name" name="name"
+                    <input type="text" id="name" name="name" value="{{ old('name') }}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="my super link" />
                     @error('name')
@@ -20,7 +20,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="link" class="block mb-2 text-sm font-medium text-gray-900">Link</label>
-                    <input type="text" id="link" name="link"
+                    <input type="text" id="link" name="link" value="{{ old('link') }}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="https://example.com/article/heavy-metal" />
                     @error('link')
