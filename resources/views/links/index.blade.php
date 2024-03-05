@@ -39,7 +39,7 @@
                         @foreach ($links as $link)
                         <tr class="bg-white border-b">
                             <td class="px-6 py-4">{{ $link->name }}</td>
-                            <td class="px-6 py-4"><a href="{{ $link->link }}" data-link-id="{{ $link->id }}" class="text-blue-500 hover:underline">{{ $link->link }}</a></td>
+                            <td class="px-6 py-4"><a href="{{ $link->link }}" data-link-id="{{ $link->id }}" class="user-link text-blue-500 hover:underline">{{ $link->link }}</a></td>
                             <td class="px-6 py-4">{{ $link->visits_count }}</td>
                             <td class="px-6 py-4">{{ $link->latest_visit ? $link->latest_visit->created_at->format('M j Y - H:ia') : 'N/A' }}</td>
                             <td class="px-6 py-4">
